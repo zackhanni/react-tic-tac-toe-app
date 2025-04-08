@@ -9,6 +9,15 @@ export const Square = ({
   player,
   setPlayer,
   index,
+  disabled,
+}: {
+  value: string;
+  values: string[];
+  setValues: any;
+  player: number;
+  setPlayer: any;
+  index: number;
+  disabled: boolean;
 }) => {
   //   const [value, setValue] = useState(" ");
   const updateValues = (newValue: string) => {
@@ -28,7 +37,11 @@ export const Square = ({
   };
 
   return (
-    <button onClick={values[index] === " " ? handleClick : ""} class="square">
+    <button
+      onClick={values[index] === " " ? handleClick : ""}
+      class="square"
+      disabled={disabled}
+    >
       {value}
     </button>
   );
