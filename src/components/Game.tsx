@@ -34,9 +34,7 @@ export const Game = () => {
       setWinner(values[6]);
     } else if (values[1] === values[4] && values[1] === values[7]) {
       setWinner(values[1]);
-    }
-
-    if (
+    } else if (
       values.every(
         (item) => item !== null && item !== undefined && item !== " "
       )
@@ -51,8 +49,10 @@ export const Game = () => {
     <>
       <div>
         <h2>Player {player}'s Turn</h2>
-        {winner === "TIE!" && <h2>It's a tie!</h2>}
-        {winner !== "" && winner !== "TIE!" && <h2>Winner is {winner}</h2>}
+        {winner === "X" || winner === "O" ? (
+          <h2>The winner is {winner}!</h2>
+        ) : null}
+        {winner === "TIE!" ? <h2>It's a TIE!</h2> : null}
       </div>
       <div className="grid">
         {values.map((value, index) => (
