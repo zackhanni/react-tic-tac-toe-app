@@ -2,21 +2,33 @@
 
 import React, { useState } from "react";
 
-export const Square = ({ player, setPlayer }) => {
-  const [value, setValue] = useState(" ");
+export const Square = ({
+  value,
+  values,
+  setValues,
+  player,
+  setPlayer,
+  index,
+}) => {
+  //   const [value, setValue] = useState(" ");
+  const updateValues = (newValue: string) => {
+    const newArray = [...values];
+    newArray[index] = newValue;
+    setValues(newArray);
+  };
 
   const handleClick = () => {
     if (player === 1) {
-      setValue("X");
+      updateValues("X");
       setPlayer(2);
     } else {
-      setValue("O");
+      updateValues("O");
       setPlayer(1);
     }
   };
 
   return (
-    <button onClick={value === " " ? handleClick : ""} class="square">
+    <button onClick={values[index] === " " ? handleClick : ""} class="square">
       {value}
     </button>
   );
