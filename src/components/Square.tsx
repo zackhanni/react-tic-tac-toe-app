@@ -1,7 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
-
 export const Square = ({
   value,
   values,
@@ -14,7 +12,7 @@ export const Square = ({
   value: string;
   values: string[];
   setValues: any;
-  player: number;
+  player: string;
   setPlayer: any;
   index: number;
   disabled: boolean;
@@ -27,12 +25,12 @@ export const Square = ({
   };
 
   const handleClick = () => {
-    if (player === 1) {
+    if (player === "X") {
       updateValues("X");
-      setPlayer(2);
+      setPlayer("O");
     } else {
       updateValues("O");
-      setPlayer(1);
+      setPlayer("X");
     }
   };
 

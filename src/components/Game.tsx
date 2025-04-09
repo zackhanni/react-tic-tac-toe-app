@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Square } from "./Square";
 
 export const Game = () => {
-  const [player, setPlayer] = useState(1);
+  const [player, setPlayer] = useState("X");
   const [values, setValues] = useState(new Array(9).fill(" "));
   const [winner, setWinner] = useState("");
   // how to win
@@ -39,20 +39,15 @@ export const Game = () => {
         (item) => item !== null && item !== undefined && item !== " "
       )
     ) {
-      setWinner("TIE!");
+      setWinner("tie");
     }
-
     // if all 9 values are taken up and there is no winner, set winner to 'It's a TIE!"
   };
 
   return (
     <>
-      <div>
-        <h2>Player {player}'s Turn</h2>
-        {winner === "X" || winner === "O" ? (
-          <h2>The winner is {winner}!</h2>
-        ) : null}
-        {winner === "TIE!" ? <h2>It's a TIE!</h2> : null}
+      <div className="status">
+        <Status player={player} winner={winner} />
       </div>
       <div className="grid">
         {values.map((value, index) => (
@@ -69,13 +64,24 @@ export const Game = () => {
         ))}
       </div>
       <button
+        className="reset"
         onClick={() => {
           setValues(new Array(9).fill(" "));
-          setPlayer(1);
+          setPlayer("X");
         }}
       >
         Start a new game
       </button>
     </>
   );
+};
+
+const Status = ({ player, winner }: { player: number; winner: string }) => {
+  if (winner === "X" || winner === "O") {
+    return `Winner: ${winner}`;
+  } else if (winner === "tie") {
+    return "Tie";
+  } else {
+    return `Next player: ${player}`;
+  }
 };
