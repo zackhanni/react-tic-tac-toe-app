@@ -76,7 +76,7 @@ export const Game = () => {
   );
 };
 
-const Status = ({ player, winner }: { player: number; winner: string }) => {
+const Status = ({ player, winner }: { player: string; winner: string }) => {
   if (winner === "X" || winner === "O") {
     return `Winner: ${winner}`;
   } else if (winner === "tie") {
