@@ -25,21 +25,13 @@ export const Square = ({
   };
 
   const handleClick = () => {
-    if (player === "X") {
-      updateValues("X");
-      setPlayer("O");
-    } else {
-      updateValues("O");
-      setPlayer("X");
-    }
+    if (values[index] !== " " || disabled) return;
+    updateValues(player);
+    setPlayer(player === "X" ? "O" : "X");
   };
 
   return (
-    <button
-      onClick={values[index] === " " ? handleClick : ""}
-      class="square"
-      disabled={disabled}
-    >
+    <button onClick={handleClick} class="square" disabled={disabled}>
       {value}
     </button>
   );
