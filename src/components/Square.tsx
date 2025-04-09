@@ -11,9 +11,9 @@ export const Square = ({
 }: {
   value: string;
   values: string[];
-  setValues: any;
+  setValues: React.Dispatch<React.SetStateAction<string[]>>;
   player: string;
-  setPlayer: any;
+  setPlayer: React.Dispatch<React.SetStateAction<string>>;
   index: number;
   disabled: boolean;
 }) => {
@@ -31,7 +31,7 @@ export const Square = ({
   };
 
   return (
-    <button onClick={handleClick} class="square" disabled={disabled}>
+    <button onClick={handleClick} className="square" disabled={disabled}>
       {value}
     </button>
   );
